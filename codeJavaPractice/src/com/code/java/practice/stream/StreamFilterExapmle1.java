@@ -99,8 +99,7 @@ public class StreamFilterExapmle1 {
         System.out.println(max1);
 
         System.out.println("*************************************");
-
-        System.out.println("*************************************");
+        
 
     }
 }
