@@ -5,6 +5,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -83,6 +84,22 @@ public class StreamFilterExapmle1 {
         Map<String, Long> collect6 = Arrays.stream(input1.replaceAll("[^a-zA-z\\s]", "").split(" "))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         System.out.println("word frequency after pinctution remived : "+collect6);
+        System.out.println("*************************************");
+        //How do you find the color with the most occurances
+        List<String> colorList = Arrays.asList("blue", "yellow", "green", "yellow", "blue", "purple", "green", "yellow");
+        Map<String, Long> collect7 = colorList.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(collect7);
+        Optional<Map.Entry<String, Long>> max1 = collect7.entrySet().stream().max(Map.Entry.comparingByValue());
+
+        Optional<Map.Entry<String, Long>> max = Arrays.asList("blue", "yellow", "green", "yellow", "blue", "purple", "green", "Yellow")
+                .stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue());
+        System.out.println(max);
+        System.out.println(max1);
+
+        System.out.println("*************************************");
+
         System.out.println("*************************************");
 
     }
